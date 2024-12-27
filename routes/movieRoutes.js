@@ -19,5 +19,9 @@ router.get('/',getMovies);
 router.post('/', upload.single('poster'), addMovie);
 router.put('/:id', upload.single('poster'), editMovie);
 
+router.get('/test', (req, res) => {
+    return res.json({ message: 'List of movies' });
+  });
+
 module.exports = router;
             
