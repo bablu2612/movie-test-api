@@ -63,5 +63,9 @@ export class MovieService {
   // Use findByIdAndDelete to remove the movie
   await this.movieModel.findByIdAndDelete(id);
 }
+
+async getMovieById(id: string) {
+  return await this.movieModel.findById(id).exec();
+}
   
 }

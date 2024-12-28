@@ -9,6 +9,7 @@ import {
     Get,
     Query,
     Delete,
+    NotFoundException,
   } from '@nestjs/common';
   import { FileInterceptor } from '@nestjs/platform-express';
   import { diskStorage } from 'multer';
@@ -73,6 +74,15 @@ import {
   async deleteMovie(@Param('id') id: string) {
     await this.movieService.deleteMovie(id);
     return { message: 'Movie deleted successfully' };
+  }
+
+  @Get(':id')
+  async getMovieById(@Param('id') id: string) {
+    const movie = await this.movieService.getMovieById(id);
+    if (!movie) {
+      throw new NotFoundException('Movie not found');
+    }
+    return movie;
   }
 
   }
