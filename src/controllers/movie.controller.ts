@@ -8,6 +8,7 @@ import {
     UseInterceptors,
     Get,
     Query,
+    Delete,
   } from '@nestjs/common';
   import { FileInterceptor } from '@nestjs/platform-express';
   import { diskStorage } from 'multer';
@@ -66,5 +67,13 @@ import {
       const movies = await this.movieService.getMovies(page, limit);
       return movies;
     }
+
+    // Delete movie by ID
+  @Delete(':id')
+  async deleteMovie(@Param('id') id: string) {
+    await this.movieService.deleteMovie(id);
+    return { message: 'Movie deleted successfully' };
+  }
+
   }
   

@@ -52,4 +52,16 @@ export class MovieService {
       movies,
     };
   }
+
+  // Delete a movie by its ID
+  async deleteMovie(id: string): Promise<void> {
+    const movie = await this.movieModel.findById(id);
+  if (!movie) {
+    throw new Error('Movie not found');
+  }
+
+  // Use findByIdAndDelete to remove the movie
+  await this.movieModel.findByIdAndDelete(id);
+}
+  
 }
