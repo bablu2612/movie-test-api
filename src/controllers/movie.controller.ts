@@ -15,7 +15,7 @@ import {
   import { extname } from 'path';
   import { MovieService } from '../services/movie.service';
   
-  @Controller('movies')
+  @Controller('api/movies')
   export class MovieController {
     constructor(private readonly movieService: MovieService) {}
   
