@@ -43,7 +43,7 @@ import {
     @UseInterceptors(
       FileInterceptor('poster', {
         storage: diskStorage({
-          destination: './uploads',
+          destination: './uploads/images',
           filename: (req, file, callback) => {
             const uniqueName = `${uuidv4()}${extname(file.originalname)}`;
             callback(null, uniqueName);
@@ -58,6 +58,8 @@ import {
       @Body() movieData: any,
       @UploadedFile() file?: Express.Multer.File,
     ) {
+      const posterFilename = file ? file.filename : null;
+
       const updatedMovie = await this.movieService.updateMovie(id, movieData, file?.filename);
       return { message: 'Movie updated successfully', updatedMovie };
     }
