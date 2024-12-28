@@ -31,6 +31,7 @@ import {
             callback(null, uniqueName);
           },
         }),
+        limits: { fileSize: 50 * 1024 * 1024 },
       }),
     )
     async createMovie(@Body() movieData: any, @UploadedFile() file: Express.Multer.File) {
@@ -48,6 +49,8 @@ import {
             callback(null, uniqueName);
           },
         }),
+        limits: { fileSize: 50 * 1024 * 1024 },
+
       }),
     )
     async updateMovie(
