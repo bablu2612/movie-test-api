@@ -9,6 +9,13 @@ async function bootstrap() {
   // Serve static files from the "uploads" directory
   app.useStaticAssets(join(__dirname, '..', 'uploads'));
 
+  // Enable CORS for all origins
+  app.enableCors({
+    origin: '*', // Allow all origins
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow all standard HTTP methods
+    allowedHeaders: '*', // Allow all headers
+  });
+
   await app.listen(3000);
 }
 bootstrap();
