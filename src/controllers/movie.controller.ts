@@ -23,7 +23,7 @@ import {
     @UseInterceptors(
       FileInterceptor('poster', {
         storage: diskStorage({
-          destination: './uploads',
+          destination: './uploads/images',
           filename: (req, file, callback) => {
             const uniqueName = `${uuidv4()}${extname(file.originalname)}`;
             callback(null, uniqueName);

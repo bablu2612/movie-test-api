@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   // Serve static files from the "uploads" directory
-  app.useStaticAssets(join(__dirname, '..', 'api/uploads'));
+  app.useStaticAssets(join(__dirname, '..', 'uploads/'));
 
   // Enable CORS for all origins
   app.enableCors({

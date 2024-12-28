@@ -42,7 +42,7 @@ __decorate([
     (0, common_1.Post)(),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('poster', {
         storage: (0, multer_1.diskStorage)({
-            destination: './uploads',
+            destination: './uploads/images',
             filename: (req, file, callback) => {
                 const uniqueName = `${(0, uuid_1.v4)()}${(0, path_1.extname)(file.originalname)}`;
                 callback(null, uniqueName);
@@ -82,6 +82,6 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], MovieController.prototype, "getMovies", null);
 exports.MovieController = MovieController = __decorate([
-    (0, common_1.Controller)('movies'),
+    (0, common_1.Controller)('api/movies'),
     __metadata("design:paramtypes", [movie_service_1.MovieService])
 ], MovieController);
