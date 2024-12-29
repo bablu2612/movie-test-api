@@ -10,17 +10,20 @@ import {
     Query,
     Delete,
     NotFoundException,
+    UseGuards,
   } from '@nestjs/common';
   import { FileInterceptor } from '@nestjs/platform-express';
   import { diskStorage } from 'multer';
   import { v4 as uuidv4 } from 'uuid';
   import { extname } from 'path';
   import { MovieService } from '../services/movie.service';
+import { AuthGuard } from '../guards/auth.guard';
   
   @Controller('api/movies')
+  @UseGuards(AuthGuard)
   export class MovieController {
     constructor(private readonly movieService: MovieService) {}
-  
+
     @Post()
     @UseInterceptors(
       FileInterceptor('poster', {
